@@ -19,9 +19,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         transform.m34 = 1.0 / 500.0
-        transDegree = 0
-        transform = CATransform3DRotate(transform, CGFloat(45 * Double.pi / 180), 0, 1, 0)
-//        btnCard.layer.transform = transform
+        transDegree = 180
+        transform = CATransform3DRotate(transform, CGFloat(transDegree * Double.pi / 180), 0, 1, 0)
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0.5, options: .calculationModeCubic, animations: {
+            self.btnCard.layer.transform = self.transform
+//            self.cardImage = UIImage(named: "kakaounit_back")
+//            self.btnCard.setImage(self.cardImage, for: .normal)
+        }, completion: nil)
     }
 
     @IBAction func btnFlip(_ sender: Any) {
